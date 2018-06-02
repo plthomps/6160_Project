@@ -1,0 +1,130 @@
+Table Outline
+
+Clients
+	Attributes:
+		- idClient (pk)
+		- first_name VARCHAR
+		- last_name VARCHAR
+		- middle_initial CHAR
+		- date_of_birth DATE
+		- gender CHAR
+		- phone_number VARCHAR
+		- email_address VARCHAR
+
+Teacher
+    Attributes:
+        - idClient (fk)
+        - position VARCHAR
+        - school_name VARCHAR
+        - coach BOOLEAN
+
+CollegeStudent
+    Attributes:
+        - idClient (fk)
+        - school_name VARCHAR
+        - major VARCHAR
+        - graduation_date DATE
+
+EmergencyContact
+	Attributes:
+		- idContact (pk)
+	    - idClient (fk)
+		- first_name VARCHAR
+		- last_name VARCHAR
+		- middle_initial CHAR
+		- gender CHAR
+		- phone_number VARCHAR
+
+Address
+	Attributes:
+		- idAddress (pk)
+        - idClient (fk)
+		- street_address_1 VARCHAR
+		- street_address_2 VARCHAR
+		- state VARCHAR
+		- zip_code VARCHAR
+		- country VARCHAR
+
+Pets
+	Attributes:
+		- idPet (pk)
+		- idClient (fk)
+		- idType (fk)
+		- name VARCHAR
+		- gender CHAR
+		- size (small, medium, large, extra large) INT
+		- special_needs VARCHAR (comment)
+
+PetType
+	Attributes:
+		- idType (pk)
+		- type VARCHAR
+		- description VARCHAR
+
+Service
+	Attributes:
+		- idService(pk)
+		- type VARCHAR
+		- cost FLOAT
+
+Order
+	Attributes:
+		- idOrder (pk)
+		- idClient (fk)
+		- idPet (fk)
+        - start_datetime DATETIME
+        - completion_datetime DATETIME
+
+OrderService
+	Attributes:
+		- idOrderService (pk)
+		- idOrder (fk)
+		- idService (fk)
+		- idTechnician (fk)
+		- comment VARCHAR
+
+Technician
+	Attributes:
+		- idTechnician (pk)
+        - idClient (fk)
+		- first_name VARCHAR
+        - last_name VARCHAR
+        - middle_initial CHAR
+        - date_of_birth DATE
+        - gender CHAR
+        - phone_number VARCHAR
+        - email_address VARCHAR
+        - certified BOOLEAN
+        - car BOOLEAN
+        - hire_date
+
+Preference
+    Attributes:
+        - idPreference (pk)
+        - type VARCHAR
+        - description VARCHAR
+
+TechnicianPreference
+    Attributes:
+        - idPreference (fk)
+        - idTechnician (fk)
+
+
+Rating
+    Attributes:
+        - idClient (fk)
+        - rating INT (0, 10)
+        - comment VARCHAR
+
+
+
+
+
+
+
+
+
+
+
+
+
