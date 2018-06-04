@@ -1,5 +1,12 @@
-The objective of this project is to create a relational database for Dr. William Patel’s pet service, which will include pet boarding, medicating, bathing, walking, and more. This project will have 4 key deliverables:
-1.) A Github site which includes group name, members, and a picture, as well as a readme section which briefly explains the project, completed no later than May 25; 
-2.) A project scope and business rules, an Enhanced Entity Relationship Diagram, and a Schema, completed no later than June 11; 
-3.) All tables and relationships for the project. A SQL Dump File will be submitted, which will include the Schema, data, functions, procedures, etc. completed no later than June 18;
+The objective of this project is to create a relational database for Dr. William Patel’s pet service, which will include pet boarding,
+medicating, bathing, walking, and more. This project will have 4 key deliverables:
+
+1.) A Github site which includes group name, members, and a picture, as well as a readme section which briefly explains the project,
+    completed no later than May 25;
+    
+2.) A project scope and business rules, an Enhanced Entity Relationship Diagram, and a Schema, completed no later than June 11;
+
+3.) All tables and relationships for the project. A SQL Dump File will be submitted, which will include the Schema, data, functions,
+    procedures, etc. completed no later than June 18;
+    
 4.) A project demonstration. All parts of project will be posted publicly on Gitbub, posted no later than June 25.
