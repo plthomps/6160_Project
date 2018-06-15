@@ -1,0 +1,55 @@
+--INSERTING A NEW PERSON EXAMPLE--
+----------------------------------------------------------------------------
+SET @NewPersonID = (SELECT MAX(PersonID) FROM person) + 1;
+
+INSERT INTO person (PersonID, FName, LName, PreferredContact, StreetName, Zipcode, City, County, State, Phone, Email)
+VALUES (@NewPersonID, 'Rob', 'Alex', 'Email', 'ABD', 8947, 'kht', 'thsk', 'NC', 'KHkke', 'kdhhe');
+----------------------------------------------------------------------------
+--VIEW TO SHOW CLIENTID, FNAME, LNAME, NUMBEROFPETS, DATEJOINED--
+----------------------------------------------------------------------------
+SELECT
+ClientID AS 'Client ID',
+FName AS 'First Name',
+LName AS 'Last Name',
+NumberOfPets AS 'Number of Pets',
+DateJoined AS 'Joined on' 
+FROM client,person
+WHERE client.PersonID = person.PersonID;
+----------------------------------------------------------------------------
+--INITIAL COMPUTE FOR NUMBER OF PETS--
+----------------------------------------------------------------------------
+UPDATE client
+SET NumberOfPets =(
+SELECT COUNT(PetID) 
+FROM pet,person
+WHERE client.PersonID = pet.PersonID = person.PersonID
+GROUP BY ClientID);
+----------------------------------------------------------------------------
+--TRIGGERS TO UPDATE NUMBER OF PETS IN CLIENT TABLE--
+----------------------------------------------------------------------------
+--TRIGGER FOR WHEN ADDING PET--
+DROP TRIGGER IF EXISTS ADDPET;
+DELIMITER |
+CREATE TRIGGER ADDPET
+AFTER INSERT ON pet
+FOR EACH ROW
+BEGIN
+	UPDATE client
+		SET NumberOfPets =
+        (SELECT COUNT(PetID) 
+		FROM pet,person WHERE client.PersonID = pet.PersonID = person.PersonID
+		GROUP BY ClientID);;
+END |
+DELIMITER ;
+--TRIGGER FOR WHEN DROPPING A PET--
+DROP TRIGGER IF EXISTS DROPPET;
+DELIMITER |
+CREATE TRIGGER DROPPET
+AFTER DELETE ON pet
+FOR EACH ROW
+BEGIN
+	UPDATE client
+		SET NumberOfPets =
+        (SELECT COUNT(*) FROM worker WHERE worker.departmentName = dept.departmentName);
+END |
+DELIMITER ;
