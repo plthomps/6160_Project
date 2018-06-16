@@ -1,4 +1,4 @@
---INSERTING A NEW PERSON--
+--INSERTING A NEW PERSON EXAMPLE--
 ----------------------------------------------------------------------------
 SET @NewPersonID = (SELECT MAX(PersonID) FROM person) + 1;
 
