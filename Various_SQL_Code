@@ -5,6 +5,55 @@ SET @NewPersonID = (SELECT MAX(PersonID) FROM person) + 1;
 INSERT INTO person (PersonID, FName, LName, PreferredContact, StreetName, Zipcode, City, County, State, Phone, Email)
 VALUES (@NewPersonID, 'Rob', 'Alex', 'Email', 'ABD', 8947, 'kht', 'thsk', 'NC', 'KHkke', 'kdhhe');
 ----------------------------------------------------------------------------
+--ASSIGNING A STUDENT DISCOUNT--
+----------------------------------------------------------------------------
+SET SQL_SAFE_UPDATES=0;
+SET @ApplicationEmail = 'jsmith@gmail.com';
+SET @NewDiscountID = (SELECT MAX(DiscountID) FROM discounts) + 1;
+SET @NewSchoolName = 'UNCC';
+SET @NewGraduationDate = '2020-05-14';
+SET @NewMajor = 'Math';
+INSERT INTO discounts(DiscountID,DiscountType,DiscountAmount)
+VALUES (@NewDiscountID,'STUDENT', 10);
+UPDATE client 
+SET DiscountID = @NewDiscountID
+WHERE client.PersonID = (SELECT PersonID FROM person WHERE Email = @ApplicationEmail);
+INSERT INTO studentdiscount(DiscountID,Major,GraduationDate,SchoolName)
+VALUES (@NewDiscountID,@NewMajor,@NewGraduationDate,@NewSchoolName);
+----------------------------------------------------------------------------
+--ASSIGNING A TEACHER DISCOUNT--
+----------------------------------------------------------------------------
+SET SQL_SAFE_UPDATES=0;
+SET @ApplicationEmail = 'lpaprocki@hotmail.com';
+SET @NewDiscountID = (SELECT MAX(DiscountID) FROM discounts) + 1;
+SET @NewSchoolName = 'UNCC';
+SET @NewPosition = 'Professor';
+SET @NewCoach = '1';
+INSERT INTO discounts(DiscountID,DiscountType,DiscountAmount)
+VALUES (@NewDiscountID,'TEACHER', 15);
+UPDATE client 
+SET DiscountID = @NewDiscountID
+WHERE client.PersonID = (SELECT PersonID FROM person WHERE Email = @ApplicationEmail);
+INSERT INTO teacherdiscount(DiscountID,Position,Coach,SchoolName)
+VALUES (@NewDiscountID,@NewPosition,@NewCoach,@NewSchoolName);
+----------------------------------------------------------------------------
+--EVENT THAT WILL CHECK GRADUATION DATES AND DELETE INVALID DISCOUNTS--
+----------------------------------------------------------------------------
+CREATE EVENT checkGradDates
+	ON SCHEDULE EVERY 1 DAY
+	DO
+		UPDATE client
+		SET DiscountID = null
+		WHERE(
+			SELECT GraduationDate
+			FROM studentdiscount
+			WHERE client.DiscountID = studentdiscount.DiscountID) < CURDATE();
+		DELETE FROM studentdiscount
+		WHERE GraduationDate < CURDATE();
+		DELETE FROM discounts
+		WHERE discounts.DiscountID NOT IN (SELECT DiscountID FROM studentdiscount)
+		AND discounts.DiscountID NOT IN (SELECT DiscountID FROM teacherdiscount);
+----------------------------------------------------------------------------
 --ADD PREFERENCE COLUMN TO THE TECH TABLE--
 ----------------------------------------------------------------------------
 ALTER TABLE tech
