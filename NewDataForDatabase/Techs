@@ -8,6 +8,7 @@ ADD Preference VARCHAR(4);
 ----------------------------------------------------------------------------
 --ADDS 10 TECHS--
 ----------------------------------------------------------------------------
+SET SQL_SAFE_UPDATES=0;
 INSERT INTO tech (PersonID,SSN,Title,Certified,Available,DateHired,Preference)
 VALUES (281,'728352119','VET TECH',1,'SUN,WED,THU','2018-02-01','CAT'),
 	   (283,'169415194','TECH',0,'SAT,SUN,FRI','2018-01-01','DOG'),
