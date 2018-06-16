@@ -172,6 +172,19 @@ NumberOfPets AS '# of Pets'
 FROM (client INNER JOIN person ON person.PersonID = client.PersonID),discounts
 WHERE client.DiscountID = discounts.DiscountID;
 ----------------------------------------------------------------------------
+--VIEW TO SHOW TECH ORDER HISTORY--
+----------------------------------------------------------------------------
+CREATE VIEW TechOrderHistory AS
+SELECT
+tech.TechID AS 'Tech ID',
+FName AS 'First Name',
+LName AS 'Last Name',
+Phone,
+StartDate AS 'Start Order',
+EndDate AS 'End Order'
+FROM (orders INNER JOIN tech ON orders.TechID = tech.TechID), person
+WHERE tech.PersonID = person.PersonID;
+----------------------------------------------------------------------------
 --INITIAL COMPUTE FOR NUMBER OF PETS--
 ----------------------------------------------------------------------------
 UPDATE client
