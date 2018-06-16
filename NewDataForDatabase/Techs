@@ -1,0 +1,25 @@
+----------------------------------------------------------------------------
+--YOU'LL NEED TO ADD THIS COLUMN BEFORE THE TECH DATA--
+--ADD PREFERENCE COLUMN TO THE TECH TABLE--
+----------------------------------------------------------------------------
+ALTER TABLE tech
+ADD Preference VARCHAR(4);
+
+----------------------------------------------------------------------------
+--ADDS 10 TECHS--
+----------------------------------------------------------------------------
+INSERT INTO tech (PersonID,SSN,Title,Certified,Available,DateHired,Preference)
+VALUES (281,'728352119','VET TECH',1,'SUN,WED,THU','2018-02-01','CAT'),
+	   (283,'169415194','TECH',0,'SAT,SUN,FRI','2018-01-01','DOG'),
+	   (285,'864017208','VET TECH',1,'SUN,TUE,WED,THU','2018-03-29','BOTH'),
+	   (286,'658804894','TECH',1,'SAT,TUE,FRI','2018-05-07','BOTH'),
+	   (287,'132621920','TECH',1,'SAT,SUN,WED,THU','2018-03-04','BOTH'),
+	   (291,'245938504','VET (RETIRED)',1,'ALL','2018-02-02','BOTH'),
+	   (292,'331090841','TECH',1,'SAT,TUE,WED','2018-01-12','BOTH'),
+	   (293,'677981762','VET TECH',1,'MON,TUE,WED,FRI','2018-02-19','DOG'),
+	   (296,'399949754','VET TECH',1,'SAT,SUN','2018-03-03','CAT'),
+	   (298,'554369946','TECH',1,'SUN,MON,TUE','2018-02-25','DOG'),
+	   (300,'780065006','TECH',0,'SAT,TUE,WED','2018-05-02','BOTH'),
+	   (301,'384025068','TECH',0,'SAT,MON,TUE,WED,FRI','2018-03-15','BOTH'),
+	   (304,'599554493','TECH',1,'SAT,SUN,MON','2018-01-28','BOTH'),
+	   (374,'213281902','TECH',0,'SUN,MON,TUE,THU','2018-03-15','BOTH');
