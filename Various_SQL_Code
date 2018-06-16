@@ -185,6 +185,30 @@ EndDate AS 'End Order'
 FROM (orders INNER JOIN tech ON orders.TechID = tech.TechID), person
 WHERE tech.PersonID = person.PersonID;
 ----------------------------------------------------------------------------
+--VIEW TO SHOW TECH TASKS BY ORDER--
+----------------------------------------------------------------------------
+CREATE VIEW TechTasksByOrder AS
+SELECT
+orders.TechID AS 'Tech ID',
+CONCAT(FName,' ',LName) AS 'Tech\'s Name',
+orders.OrderID AS 'Order #',
+(SELECT CONCAT(FName,' ',LName) FROM person
+	WHERE person.PersonID = (SELECT PersonID FROM pet
+	WHERE pet.PetID = orders.PetID)) AS 'Client\'s Name',
+(SELECT StreetName FROM person
+	WHERE person.PersonID = (SELECT PersonID FROM pet
+	WHERE pet.PetID = orders.PetID)) AS 'Client\'s Address',
+(SELECT CONCAT(PetName,' (',PetType,')') FROM pet
+	WHERE pet.PetID = orders.PetID) AS 'Pet\'s Name',
+ServiceType AS 'Duty',
+StartDate AS 'Start Order',
+EndDate AS 'End Order',
+(SELECT NeedDescription FROM specialneeds
+	WHERE specialneeds.PetID = orders.PetID) AS 'Pet\'s Notes'
+FROM (services INNER JOIN orderservices ON services.ServiceID = orderservices.ServiceID),orders,person,tech
+WHERE orders.OrderID = orderservices.OrderID AND tech.TechID = orders.TechID AND tech.PersonID = person.PersonID
+ORDER BY tech.TechID,StartDate;
+----------------------------------------------------------------------------
 --INITIAL COMPUTE FOR NUMBER OF PETS--
 ----------------------------------------------------------------------------
 UPDATE client
