@@ -40,6 +40,19 @@ DateJoined AS 'Joined on'
 FROM client,person
 WHERE client.PersonID = person.PersonID;
 ----------------------------------------------------------------------------
+--VIEW TO SHOW PETS WITH SPECIAL NEEDS--
+----------------------------------------------------------------------------
+CREATE VIEW 'PetsWithSpecialNeeds' AS
+SELECT
+pet.PetID AS 'Pet ID',
+PetName AS 'Pet\'s Name',
+PetType AS 'Pet Type',
+Gender,
+NeedDescription AS 'Pet Instructions',
+CONCAT(FName, " ", LName) AS 'Owner'
+FROM pet,specialneeds, person
+WHERE pet.PetID = specialneeds.PetID AND pet.PersonID = person.PersonID ORDER BY PetType, pet.PetID;
+----------------------------------------------------------------------------
 --VIEW TO SHOW TECH AVAILABILITY--
 ----------------------------------------------------------------------------
 CREATE VIEW TechAvailability AS
