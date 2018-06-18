@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<style>
+		.column {
+			float: left;
+			width: 25%;
+			padding: 50px;
+			 
+		}
+		.row:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+	</style>
+<h1>Sign Up</h1>
+<p>What do you want to sign up for?</p>
+		<form action="">
+			<fieldset>
+				<ol>
+					<li>
+						<input type="radio" name="SignUpType" value="Customer" id="Customer">
+						<label for="Customer">Customer</label>
+						<fieldset class="conditional">
+						
+								<li>								
+									<input type="radio" name="AlreadyTech" value="YesTech" id="YesTech">
+									<label for="AlreadyTech">I'm a tech</label>
+									<fieldset class="conditional">
+										<ol>
+											<li>
+												<label for="TechID">What is your Tech ID</label>
+												<input type="text" id="FName">
+											</li>
+										</ol>
+								</li>
+							
+								<li>								
+									<input type="radio" name="AlreadyTech" value="NoTech" id="NoTech">
+									<label for="AlreadyTech">I'm not a tech</label>
+									<fieldset class="conditional">
+										<ol>
+											<li>
+												<label for="FName">First Name</label>
+												<input type="text" id="FName">
+											</li><br>
+											<li>
+												<label for="LName">Last Name</label>
+												<input type="text" id="LName">
+											</li><br>
+											<li>
+												<label for="Email">Email</label>
+												<input type="text" id="Email">
+											</li><br>
+											<li>
+												<label for="Phone">Phone # (ex 5551119999)</label>
+												<input type="text" id="Phone">
+											</li><br>
+											<li>
+												<label for="PreferredContact">Preferred Contact Method</label>
+												<input type="radio" name="PreferredContact" value="Phone"> Phone
+												<input type="radio" name="PreferredContact" value="Email"> Email
+											</li><br>
+											<li>
+												<label for="StreetName">Street Address</label>
+												<input type="text" id="StreetName">
+											</li><br>
+											<li>
+												<label for="Apartment">Apartment</label>
+												<input type="text" id="Apartment">
+											</li><br>
+											<li>
+												<label for="Zipcode">Zipcode</label>
+												<input type="text" id="Zipcode">
+											</li><br>
+											<li>
+												<label for="City">City</label>
+												<input type="text" id="City">
+											</li><br>
+											<li>
+												<label for="County">County</label>
+												<input type="text" id="Country">
+											</li><br>
+											<li>
+												<label for="State">State</label>
+												<input type="text" id="State">
+											</li><br>
+											<li>
+												<label for="Password">Password</label>
+												<input type="text" id="Password">
+											</li><br>
+										</ol>
+											</li>
+											
+								</li>
+							
+				
+					<li>
+						<input type="radio" name="SignUpType" value="Tech" id="Tech">
+						<label for="Tech">Tech</label>
+						<fieldset class="conditional">
+							<ol>
+							</ol>
+						</fieldset>
+					</li>
+					<li>
+						<input type="radio" name="SignUpType" value="Both" id="Both">
+						<label for="Both">Both</label>
+					</li>
+				</ol>
+			</fieldset>
+		</form>
+</body>
+</html>
