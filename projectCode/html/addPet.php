@@ -52,10 +52,8 @@
 								</div>
 							</div>
 						    <select class="form-control addPetInput" id="sel1">
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
+								<option>Dog</option>
+								<option>Cat</option>
 						    </select>
 							
 							<div class="row">
@@ -74,10 +72,14 @@
 								</div>
 							</div>
 						    <select class="form-control addPetInput" id="sel1">
-								<option>Small (0-15 lbs)</option>
+								<!-- <option>Small (0-15 lbs)</option>
 								<option>Medium (16-40 lbs)</option>
 								<option>Large (41-100 lbs)</option>
-								<option>Giant (101+ lbs)</option>
+								<option>Giant (101+ lbs)</option> -->
+								<option>S</option>
+								<option>M</option>
+								<option>L</option>
+								<option>XL</option>
 						    </select>
 						</div>
 					</form>
