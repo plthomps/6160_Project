@@ -18,7 +18,7 @@
 	    bottom: 0;
 	    width: 100%;
 	    text-align: center;
-		background-color:#66666642;
+		background-color:#bdbdbd;
 	}
 	/*.footerCls .row {
 			margin-right: 0px;
@@ -27,7 +27,7 @@
 	</style>
 	<body class="footerCls">
 	<center>
-		<div class="row footer">
+		<div class="footer">
 			<div class="col-md-12 col-lg-12">
 				<center><b> © TeamRover 2018 | Don't produce any of the works without written consent | Designed and developed by TeamRover </b></center>
 			</div>
