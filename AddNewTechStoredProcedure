@@ -30,11 +30,12 @@ BEGIN
 	@NewPhone = NewPhone,
 	@NewEmail = NewEmail,
 	@NewPassword = NewPassword,
-  @NewSSN = NewSSN,
-  @NewTitle = NewTitle,
-  @NewCertified = NewCertified,
-  @NewAvailable = NewAvailable,
-  @NewPreference = NewPreference;
+  	@NewSSN = NewSSN,
+  	@NewTitle = NewTitle,
+  	@NewCertified = NewCertified,
+  	@NewAvailable = NewAvailable,
+  	@NewPreference = NewPreference;
+	SET SQL_SAFE_UPDATES = 0;
 	INSERT INTO person (PersonID,FName,LName,PreferredContact,StreetName,Apartment,Zipcode,City,County,State,Phone,Email,Password)
 	VALUES (@NewPersonID,@NewFName,@NewLName,@NewPreferredContact,@NewStreetName,
 	@NewApartment,@NewZipcode,@NewCity,@NewCounty,'NC',@NewPhone,@NewEmail,@NewPassword);
