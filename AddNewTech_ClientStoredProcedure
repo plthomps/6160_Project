@@ -30,16 +30,17 @@ BEGIN
 	@NewPhone = NewPhone,
 	@NewEmail = NewEmail,
 	@NewPassword = NewPassword,
-  @NewSSN = NewSSN,
-  @NewTitle = NewTitle,
-  @NewCertified = NewCertified,
-  @NewAvailable = NewAvailable,
-  @NewPreference = NewPreference;
+  	@NewSSN = NewSSN,
+  	@NewTitle = NewTitle,
+  	@NewCertified = NewCertified,
+  	@NewAvailable = NewAvailable,
+  	@NewPreference = NewPreference;
+	SET SQL_SAFE_UPDATES = 0;
 	INSERT INTO person (PersonID,FName,LName,PreferredContact,StreetName,Apartment,Zipcode,City,County,State,Phone,Email,Password)
 	VALUES (@NewPersonID,@NewFName,@NewLName,@NewPreferredContact,@NewStreetName,
 	@NewApartment,@NewZipcode,@NewCity,@NewCounty,'NC',@NewPhone,@NewEmail,@NewPassword);
 	INSERT INTO tech (PersonID,SSN,Title,Certified,Available,DateHired,Preference)
 	VALUES (@NewPersonID,@NewSSN,@NewTitle,@NewCertified,@NewAvailable,CURDATE(),@NewPreference);
-  INSERT INTO client (PersonID,DateJoined)
+  	INSERT INTO client (PersonID,DateJoined)
 	VALUES (@NewPersonID,CURDATE());
 END;
