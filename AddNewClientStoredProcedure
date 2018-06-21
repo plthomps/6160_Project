@@ -1,0 +1,33 @@
+DELIMITER |
+CREATE PROCEDURE AddNewClient (
+IN NewFName VARCHAR(45),
+IN NewLName VARCHAR(45),
+IN NewPreferredContact VARCHAR(5),
+IN NewStreetName VARCHAR(50),
+IN NewApartment VARCHAR(10),
+IN NewZipcode INT,
+IN NewCity VARCHAR(45),
+IN NewCounty VARCHAR(45),
+IN NewPhone VARCHAR(10),
+IN NewEmail VARCHAR(50),
+IN NewPassword VARCHAR(50))
+
+BEGIN
+	SET @NewPersonID = (SELECT MAX(PersonID) FROM person),
+	@NewFName = NewFName,
+	@NewLName = NewLName,
+	@NewPreferredContact = NewPreferredContact,
+	@NewStreetName = NewStreetName,
+	@NewApartment = NewApartment,
+	@NewZipcode = NewZipcode,
+	@NewCity = NewCity,
+	@NewCounty = NewCounty,
+	@NewPhone = NewPhone,
+	@NewEmail = NewEmail,
+	@NewPassword = NewPassword;
+	INSERT INTO person (PersonID,FName,LName,PreferredContact,StreetName,Apartment,Zipcode,City,County,State,Phone,Email,Password)
+	VALUES (@NewPersonID,@NewFName,@NewLName,@NewPreferredContact,@NewStreetName,
+	@NewApartment,@NewZipcode,@NewCity,@NewCounty,'NC',@NewPhone,@NewEmail,@NewPassword);
+	INSERT INTO client (PersonID,DateJoined)
+	VALUES (@NewPersonID,CURDATE());
+END;
