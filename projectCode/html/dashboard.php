@@ -48,10 +48,9 @@
 				  <h3>Clients</h3>
 				</div>
 				<div class="col-md-2 col-lg-2" style="margin-top: 1%;">
-					<button type="button" class="btn btn-primary" onclick="">Add Clients</button>
+					<button type="button" class="btn btn-primary" onclick="addClient()">Add Client</button>
 				</div>			  
 			</div>
-			  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 			</div>
 			
 			<div id="menu1" class="tab-pane fade">
