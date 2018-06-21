@@ -1,0 +1,11 @@
+DELIMITER |
+CREATE PROCEDURE UpgradeTechToClient (
+IN TechEmail VARCHAR(50))    
+	
+BEGIN
+	SET @TechEmail = TechEmail,
+	@PersonID = (SELECT PersonID FROM person WHERE person.Email = @TechEmail);
+	SET SQL_SAFE_UPDATES = 0;
+	INSERT INTO client (PersonID,DateJoined)
+	VALUES (@PersonID,CURDATE());
+END;

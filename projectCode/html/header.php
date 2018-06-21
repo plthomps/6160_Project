@@ -12,7 +12,7 @@
 	</head>
 	<style>
 		.header{
-			background-color:#66666642 !important;
+			background-color:#bdbdbd !important;
 		}
 		.headStyle{
 			font-size: 4rem !important;
@@ -34,6 +34,7 @@
 			margin-right: 0px;
 			margin-left: 0px;
 		}*/
+		
 	</style>
 	<body class="headerCls">
 		<div class="row header">

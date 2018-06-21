@@ -16,3 +16,10 @@ function logOut(){
 	window.location.href="./index.php";
 }
 
+function addPet(){
+	window.location.href="./addPet.php";
+}
+function addClient() {
+	window.location.href="./addCustomer.php";
+}
+
