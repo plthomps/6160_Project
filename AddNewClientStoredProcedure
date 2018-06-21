@@ -13,7 +13,7 @@ IN NewEmail VARCHAR(50),
 IN NewPassword VARCHAR(50))
 
 BEGIN
-	SET @NewPersonID = (SELECT MAX(PersonID) FROM person),
+	SET @NewPersonID = ((SELECT MAX(PersonID) FROM person)+1),
 	@NewFName = NewFName,
 	@NewLName = NewLName,
 	@NewPreferredContact = NewPreferredContact,
