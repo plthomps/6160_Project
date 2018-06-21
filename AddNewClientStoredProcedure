@@ -25,6 +25,7 @@ BEGIN
 	@NewPhone = NewPhone,
 	@NewEmail = NewEmail,
 	@NewPassword = NewPassword;
+	SET SQL_SAFE_UPDATES = 0;
 	INSERT INTO person (PersonID,FName,LName,PreferredContact,StreetName,Apartment,Zipcode,City,County,State,Phone,Email,Password)
 	VALUES (@NewPersonID,@NewFName,@NewLName,@NewPreferredContact,@NewStreetName,
 	@NewApartment,@NewZipcode,@NewCity,@NewCounty,'NC',@NewPhone,@NewEmail,@NewPassword);
