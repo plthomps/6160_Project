@@ -37,10 +37,10 @@ $id = $_GET['id'];
 
  if(mysqli_query($link, "DELETE FROM pet WHERE petid=$id")){
 	//echo "<script type='text/javascript'>alert('Pet Deleted successfully.');</script>";
-	include('dashboard.php');
+  	header("Location: dashboard.php");
 	} else{
 	echo "<script type='text/javascript'>alert('Delete order for this pet first then delete the pet.');</script>";}
-	include('dashboard.php');
+  	header("Location: dashboard.php");
 
 }
 
