@@ -22,4 +22,10 @@ function addPet(){
 function addClient() {
 	window.location.href="./addCustomer.php";
 }
+function placeOrder() {
+    window.location.href="./placeOrder.php";
+}
+function orderForm() {
+    window.location.href="./orderForm.php";
+}
 
