@@ -31,19 +31,18 @@ if (isset($_GET['id']) && is_numeric($_GET['id']))
 
 $id = $_GET['id'];
 
-echo $id;
+//echo $id;
 
 // delete the entry
 
  if(mysqli_query($link, "DELETE FROM pet WHERE petid=$id")){
- header("Location: dashboard.php");
+	//echo "<script type='text/javascript'>alert('Pet Deleted successfully.');</script>";
+	include('dashboard.php');
 	} else{
-	echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);}
-//header("Location: dashboard.php");
+	echo "<script type='text/javascript'>alert('Delete order for this pet first then delete the pet.');</script>";}
+	include('dashboard.php');
 
 }
-
-
 
 
 ?>
