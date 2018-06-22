@@ -128,11 +128,14 @@
 			</div>
 			
 			<div id="menu2" class="tab-pane fade">
-			  <h3>Place an Order</h3>
-			  <div class="col-md-2 col-lg-2" style="margin-top: 1%;">
-					<!--<button type="button" class="btn btn-primary" onclick="placeOrder();">Place Order</button>-->
-					<a href="./placeOrder.php">Place Order</a>
+			  <div class="row">
+				<div class="col-md-10 col-lg-10">
+				   <h3>Place an Order</h3>
 				</div>
+				<div class="col-md-2 col-lg-2" style="margin-top: 1%;">
+					<button type="button" class="btn btn-primary"><a href="./placeOrder.php" style="color: #fff !important;">Place Order</a></button>
+				</div>			  
+			</div>
 			  <!--<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>-->
 			</div>
 		  </div>
