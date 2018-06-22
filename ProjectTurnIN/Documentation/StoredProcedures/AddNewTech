@@ -1,3 +1,7 @@
+-- Following procedure is intended when creating an account for an individual that only wishes to be a tech
+-- Majority or the data is added to the person table with additional data added to the tech table. This
+-- procedure ensures that the new tech recieves the same PersonID in both the person and tech table.
+
 DELIMITER |
 CREATE PROCEDURE AddNewTECH (
 IN NewFName VARCHAR(45),
@@ -30,11 +34,11 @@ BEGIN
 	@NewPhone = NewPhone,
 	@NewEmail = NewEmail,
 	@NewPassword = NewPassword,
-  @NewSSN = NewSSN,
-  @NewTitle = NewTitle,
-  @NewCertified = NewCertified,
-  @NewAvailable = NewAvailable,
-  @NewPreference = NewPreference;
+  	@NewSSN = NewSSN,
+  	@NewTitle = NewTitle,
+  	@NewCertified = NewCertified,
+  	@NewAvailable = NewAvailable,
+  	@NewPreference = NewPreference;
 	SET SQL_SAFE_UPDATES = 0;
 	INSERT INTO person (PersonID,FName,LName,PreferredContact,StreetName,Apartment,Zipcode,City,County,State,Phone,Email,Password)
 	VALUES (@NewPersonID,@NewFName,@NewLName,@NewPreferredContact,@NewStreetName,
