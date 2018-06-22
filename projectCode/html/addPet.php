@@ -15,8 +15,7 @@
 	</head>
 	<body>
 	<?php
-	if(isset($_POST['insertPet'])){ 
-		/* Attempt MySQL server connection. Assuming you are running MySQL
+	/* Attempt MySQL server connection. Assuming you are running MySQL
 		server with default setting (user 'root' with no password) */
 		$link = mysqli_connect("db-master.c2rtzjxij2h6.us-east-2.rds.amazonaws.com", "6160_team_member", "team6160_pwnew3452", "roverdb6160");
 		 
@@ -27,6 +26,82 @@
 			//echo "Connected...";
 		}
 		
+			$selectedName = "";
+			
+			$selectedDType = "";
+			$selectedCType = "";
+			
+			$selectedGenderM = "";
+			$selectedGenderF = "";
+			
+			$selectedSizeS = "";
+			$selectedSizeM = "";
+			$selectedSizeL = "";
+			$selectedSizeXL = "";
+	if (isset($_GET['id']) && is_numeric($_GET['id']))
+			{
+			echo "hey.....................";
+				$id = $_GET['id'];
+				//echo $id;
+				
+				$sql = "SELECT PetID, PetName, PetType, Gender, Size FROM pet where PetID = $id";
+				$resultSelectedPet = mysqli_query($link, $sql);
+				
+				if (mysqli_num_rows($resultSelectedPet) > 0) {
+					while($row = mysqli_fetch_assoc($resultSelectedPet)) {
+								//echo "Hello " . $row["PetName"] . $row["PetType"] . $row["Gender"] .  $row["Size"];
+								$selectedName = $row["PetName"];
+								if(strcmp($row["PetType"], "Dog") == 0){
+									$selectedDType = "selected";
+								} else{
+									$selectedCType = "selected";
+								}
+								
+								if(strcmp($row["Gender"], "M") == 0){
+									$selectedGenderM = "selected";
+								} else{
+									$selectedGenderF = "selected";
+								}
+								
+								if(strcmp($row["Size"], "S") == 0){
+									$selectedSizeS = "selected";
+								} else if(strcmp($row["Size"], "M") == 0){
+									$selectedSizeM = "selected";
+								} else if(strcmp($row["Size"], "L") == 0){
+									$selectedSizeL = "selected";
+								} else{
+									$selectedSizeXL = "selected";
+								}
+							}
+				} else {
+							echo "0 results";
+				}
+				
+				$personid = 201;
+			if(array_key_exists('petname', $_REQUEST)){
+				$name = mysqli_real_escape_string($link, $_REQUEST['petname']);
+			}
+			if(array_key_exists('pettype', $_POST)){
+			$selected_type = $_POST['pettype'];
+			}
+			if(array_key_exists('petgender', $_POST)){
+			$selected_gender = $_POST['petgender'];
+			}
+			if(array_key_exists('petsize', $_POST)){
+			$selected_size = $_POST['petsize'];
+			}
+				
+				if(isset($_POST['insertPet'])){ 
+					$sqlUpdate = "UPDATE pet set PetName='$name', PetType='$selected_type', Gender='$selected_gender', Size='$selected_size' where PetID = $id";
+					if(mysqli_query($link, $sqlUpdate)){
+						echo "<script type='text/javascript'>alert('Record Updated successfully.');</script>";
+						header('Location: dashboard.php'); 
+				 } else{
+					 echo "<script type='text/javascript'>alert('ERROR: Could not able to execute');</script>";
+				 }
+				}
+			} else{ echo "else.....................";
+	if(isset($_POST['insertPet'])){ 
 		
 		// Escape user inputs for security
 		$result = mysqli_query($link, "SELECT MAX(PetID) FROM pet");
@@ -56,26 +131,30 @@
 			
 			//echo "hi " . $selected_type . " " . $selected_gender . " " . $selected_size;
 			
-			if (!empty($petid) && !empty($personid) && !empty($name) && !empty($selected_type) && !empty($selected_gender) && !empty($selected_size)) {
-			 $sql = "INSERT INTO pet VALUES ('$petid','$personid','$name','$selected_type','$selected_gender','$selected_size')";
-			 if(mysqli_query($link, $sql)){
-				 echo "<script type='text/javascript'>alert('Records added successfully.');</script>";
-				header('Location: dashboard.php'); 
-				$name = "";
-				$selected_type = "";
-				$selected_gender = "";
-				$selected_size = "";
-			 } else{
-				 echo "<script type='text/javascript'>alert('ERROR: Could not able to execute');</script>";
-				 //echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-			 }
-		}
-		else{
-			echo "<script type='text/javascript'>alert('Please add name');</script>";
-		}
-		
+			
+				 if (!empty($petid) && !empty($personid) && !empty($name) && !empty($selected_type) && !empty($selected_gender) && !empty($selected_size)) {
+				 
+				 $sql = "INSERT INTO pet VALUES ('$petid','$personid','$name','$selected_type','$selected_gender','$selected_size')";
+				 if(mysqli_query($link, $sql)){
+					 echo "<script type='text/javascript'>alert('Records added successfully.');</script>";
+					header('Location: dashboard.php'); 
+					$name = "";
+					$selected_type = "";
+					$selected_gender = "";
+					$selected_size = "";
+				 } else{
+					 echo "<script type='text/javascript'>alert('ERROR: Could not able to execute');</script>";
+					 //echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+				 }
+				
+			}
+			else{
+				echo "<script type='text/javascript'>alert('Please add name');</script>";
+			}
+
 		// close connection
 		mysqli_close($link);
+		}
 		}
 		?>
 		
@@ -106,7 +185,7 @@
 							
 							<div class="row">
 								<div class="col-md-12 col-lg-12 addPetInput">
-									<input type="text" class="form-control" name="petname" id="petName">
+									<input type="text" class="form-control" name="petname" id="petName" value="<?php echo $selectedName; ?>">
 								</div>         	
 							</div>
 						
@@ -116,8 +195,8 @@
 								</div>
 							</div>
 						    <select class="form-control addPetInput" name="pettype" id="sel1">
-								<option>Dog</option>
-								<option>Cat</option>
+								<option <?php echo $selectedDType; ?> >Dog</option>
+								<option <?php echo $selectedCType; ?> >Cat</option>
 						    </select>
 							
 							<div class="row">
@@ -126,8 +205,8 @@
 								</div>
 							</div>
 						    <select class="form-control addPetInput" name="petgender" id="sel1">
-								<option>M</option>
-								<option>F</option>
+								<option <?php echo $selectedGenderM; ?> >M</option>
+								<option <?php echo $selectedGenderF; ?> >F</option>
 						    </select>
 							
 							<div class="row">
@@ -140,10 +219,10 @@
 								<option>Medium (16-40 lbs)</option>
 								<option>Large (41-100 lbs)</option>
 								<option>Giant (101+ lbs)</option> -->
-								<option>S</option>
-								<option>M</option>
-								<option>L</option>
-								<option>XL</option>
+								<option <?php echo $selectedSizeS; ?> >S</option>
+								<option <?php echo $selectedSizeM; ?> >M</option>
+								<option <?php echo $selectedSizeL; ?> >L</option>
+								<option <?php echo $selectedSizeXL; ?> >XL</option>
 						    </select>
 						</div>
 						
