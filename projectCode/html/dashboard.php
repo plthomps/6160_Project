@@ -44,12 +44,12 @@
 		  <div class="tab-content">
 			<div id="home" class="tab-pane fade in active">
 			<div class="row">
-				<div class="col-md-10 col-lg-10">
+				<div class="col-md-12 col-lg-12">
 				  <h3>Clients</h3>
 				</div>
-				<div class="col-md-2 col-lg-2" style="margin-top: 1%;">
+				<!--<div class="col-md-2 col-lg-2" style="margin-top: 1%;">
 					<button type="button" class="btn btn-primary" onclick="addClient()">Add Client</button>
-				</div>			  
+				</div>-->			  
 			</div>
 			</div>
 			
