@@ -108,13 +108,13 @@
 							//echo "Connected...";
 						}
 						
-						$sql = "SELECT PetName, PetType, Gender, Size FROM pet";
+						$sql = "SELECT PetID, PetName, PetType, Gender, Size FROM pet order by PetID DESC";
 						$result = mysqli_query($link, $sql);
 						
 						if (mysqli_num_rows($result) > 0) {
 							// output data of each row
 							while($row = mysqli_fetch_assoc($result)) {
-								echo "<tr><td>" . $row["PetName"]. "</td><td>" . $row["PetType"]. "</td><td>" . $row["Gender"]. "</td><td>" . $row["Size"]. "</td></tr>";
+								echo "<tr><td class='nr'>" . $row["PetName"]. "</td><td>" . $row["PetType"]. "</td><td>" . $row["Gender"]. "</td><td>" . $row["Size"]. "</td><td><a href='addPet.php?id=" . $row['PetID'] . "'>Edit</a></td><td><a href='deletePet.php?id=" . $row['PetID'] . "'>Delete</a></td></tr>";
 							}
 						} else {
 							echo "0 results";
