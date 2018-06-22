@@ -19,12 +19,12 @@
 	</div>
 	
 	<ul class="nav nav-pills navStyle">
-	  <li class="active"><a style="color: white;" href="#menu1" data-toggle="tab" id="menu_text" onclick="signUpClick();">Sign Up</a></li>
-	  <li><a style="color: white;" href="#menu1" data-toggle="tab" id="menu_text" onclick="signInClick();">Sign In</a></li>
+	  <!--<li class="active"><a style="color: white;" href="#menu1" data-toggle="tab" id="menu_text" onclick="signUpClick();">Sign Up</a></li>
+	  <li class="active"><a style="color: white;" href="#menu1" data-toggle="tab" id="menu_text" onclick="signInClick();">Sign In</a></li>-->
 	  <!--<li role="presentation"><a href="#">Messages</a></li>-->
 	</ul>
 	
-	<div class="container rectangle" id="signUpRect">
+	<!--<div class="container rectangle" id="signUpRect">
 		<div class="row signIn">Sign Up</div>
 		<div class="row">
 			<div class="col-md-6 col-lg-6 signInLabels">
@@ -128,9 +128,9 @@
 		</div>
 		
 		<center><button type="submit" id="signUpBtn" class="btn btn-default btnSignUp">Sign Up</button></center>
-	</div>
+	</div>-->
 	
-	<div class="container SignInRectangle" id="signInRect" style="display: none;">
+	<div class="container SignInRectangle" id="signInRect" <!--style="display: none;"-->>
 		<div class="row signIn">Sign In</div>
 		
 		<div class="row">
@@ -140,7 +140,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12 col-lg-12">
-				<input type="email" class="form-control" id="email1">
+				<input type="email" class="form-control" id="email1" value="admin">
 			</div>         	
 		</div>
 		
@@ -151,7 +151,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12 col-lg-12">
-				<input type="password" class="form-control" id="password1">
+				<input type="password" class="form-control" id="password1" value="admin">
 			</div>
 		</div>
 		
