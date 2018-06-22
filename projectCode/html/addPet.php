@@ -40,7 +40,7 @@
 			$selectedSizeXL = "";
 	if (isset($_GET['id']) && is_numeric($_GET['id']))
 			{
-			echo "hey.....................";
+			//echo "hey.....................";
 				$id = $_GET['id'];
 				//echo $id;
 				
@@ -100,7 +100,7 @@
 					 echo "<script type='text/javascript'>alert('ERROR: Could not able to execute');</script>";
 				 }
 				}
-			} else{ echo "else.....................";
+			} else{ //echo "else.....................";
 	if(isset($_POST['insertPet'])){ 
 		
 		// Escape user inputs for security
