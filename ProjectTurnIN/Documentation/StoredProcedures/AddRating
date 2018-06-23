@@ -6,7 +6,7 @@ CREATE PROCEDURE add_rating(
 	IN NewOrderID INT,
 	IN NewRating INT,
 	IN NewRater VARCHAR(45),
-	IN NewRaterComment(255))
+	IN NewRaterComment VARCHAR(255))
 	
 BEGIN
 	SET @NewRateingID = ((SELECT MAX(RateingID) FROM ratings) +1),
