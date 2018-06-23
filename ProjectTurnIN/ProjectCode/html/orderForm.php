@@ -1,4 +1,6 @@
+<!--Author:Taylor Conners-->
 <?php
+    require_once('access.php');
     if(!isset($_SESSION)){
         session_start();
     }
@@ -15,10 +17,6 @@
 <!--<button type="button" class="btn btn-primary" onclick="placeOrder();">Place Order</button>-->
 <?php
 
-    
-
-    $db = new PDO("mysql:host=db-master.c2rtzjxij2h6.us-east-2.rds.amazonaws.com;dbname=roverdb6160", "6160_team_member", "team6160_pwnew3452", array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
-
     $person_id   = $_SESSION['order_personid'];
     $pet_id      = $_SESSION['order_petid'];
     $person_name = $_SESSION['order_person'];
@@ -27,14 +25,15 @@
     $pet_gender  = $_SESSION['order_petgender'];
     $pet_size    = $_SESSION['order_petsize'];
 
-    $service_ok = false;
+    $service_ok      = false;
     $serve_id_string = '';
+
     if (isset($_SESSION['order_servicecount'])) {
         for ($i=0; $i<$_SESSION['order_servicecount'];$i++) {
             if (isset($_POST['serviceid_' . $i])) {
-                $service_ok = true;
+                $service_ok                        = true;
                 $_SESSION['order_serviceid_' . $i] = $i;
-                $serve_id_string = $serve_id_string . $i . "xxx , xxx";
+                $serve_id_string                   = $serve_id_string . $i . "xxx , xxx";
                 //break;
             } else {
                 unset($_SESSION['order_serviceid_' . $i]);
@@ -62,23 +61,23 @@
 
     if($service_ok && $start_date_ok && $end_date_ok && $technician_ok) {
         $_SESSION['order_startdate'] = $_POST['start_date'];
-        $_SESSION['order_enddate'] = $_POST['end_date'];
+        $_SESSION['order_enddate']   = $_POST['end_date'];
 
         //retrieve tech id
         $query_parts = explode(" ", $_POST['technician']);
-        $tech_id = $query_parts[2];
+        $tech_id     = $query_parts[2];
         //$stmt = $db->prepare("SELECT * FROM tech WHERE ")
 
         //Calculate the total cost of the order before moving on:
-        $query_parts = explode("xxx", $serve_id_string);
-        $serve_id_string='';
+        $query_parts     = explode("xxx", $serve_id_string);
+        $serve_id_string = '';
         for($i=0;$i<count($query_parts)-2;$i++) {
             $serve_id_string .= $query_parts[$i];
         }
         //echo "<br>" . $serve_id_string;
         $total_cost = 0;
-        $sql = "SELECT * FROM services WHERE ServiceID IN (" . $serve_id_string . ") ";
-        $stmt = $db->prepare($sql);
+        $sql        = "SELECT * FROM services WHERE ServiceID IN (" . $serve_id_string . ") ";
+        $stmt       = $db->prepare($sql);
         $stmt->execute();
         while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $total_cost+=$row['Cost'];

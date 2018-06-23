@@ -1,4 +1,6 @@
+<!--Author:Taylor Conners-->
 <?php
+    require_once('access.php');
     if(!isset($_SESSION)){
         session_start();
     }
@@ -11,9 +13,7 @@
 <body>
     <?php include('header.php'); ?>
     <a href="./dashboard.php">Return to Dashboard</a>
-    <?php
-        $db = new PDO("mysql:host=db-master.c2rtzjxij2h6.us-east-2.rds.amazonaws.com;dbname=roverdb6160", "6160_team_member", "team6160_pwnew3452", array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
-
+    <?php]
         //This block of code is executed when an order has been successfully placed.
         if(isset($_SESSION['order_finalorderid'])) {
             echo "<br>Order entered successfully into database: <br>Order Entry:<br>";
@@ -131,7 +131,6 @@
                     printf("%s", $e->getMessage());
                 }   
             }
-            $db=null;
         }
     ?>
     <h4>Select a Person: </h4>
@@ -141,7 +140,6 @@
             <?php
                 try {
                     //Populate select with all 'person' rows
-                    $db = new PDO("mysql:host=db-master.c2rtzjxij2h6.us-east-2.rds.amazonaws.com;dbname=roverdb6160", "6160_team_member", "team6160_pwnew3452", array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
                     $stmt = $db->prepare("SELECT * FROM person WHERE person.PersonID IN (SELECT pet.PersonID FROM pet)");
                     $stmt->execute();
                     while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -179,7 +177,6 @@
                 catch (PDOException $e) {
                     printf("A problem has occured: %s", $e->getMessage());      
                 }
-                $db=null;
             ?>
         </select><br><br>
         <?php endif; ?>
