@@ -9,9 +9,9 @@ DELETE.PHP
 
 
 // connect to the database
+//mysqli_connect accepts 4 parameters as serverHostName, userName, password, schemaName
+			$link = mysqli_connect("", "", "", "");
 
-$link = mysqli_connect("db-master.c2rtzjxij2h6.us-east-2.rds.amazonaws.com", "6160_team_member", "team6160_pwnew3452", "roverdb6160");
-		 
 		// Check connection
 		if($link === false){
 			//die("ERROR: Could not connect. " . mysqli_connect_error());
