@@ -13,7 +13,7 @@
 <body>
     <?php include('header.php'); ?>
     <a href="./dashboard.php">Return to Dashboard</a>
-    <?php]
+    <?php
         //This block of code is executed when an order has been successfully placed.
         if(isset($_SESSION['order_finalorderid'])) {
             echo "<br>Order entered successfully into database: <br>Order Entry:<br>";

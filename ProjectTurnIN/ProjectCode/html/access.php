@@ -5,5 +5,5 @@
     //db_name: name of mysql database located at host_name
     //user_name: username with necessary database access privileges
     //password: password for specified username
-    $db = new PDO("mysql:host=host_name;dbname=db_name", "use_name", "password", array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
+    $db = new PDO("mysql:host=host_name;dbname=db_name", "user_name", "password", array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
 ?>
