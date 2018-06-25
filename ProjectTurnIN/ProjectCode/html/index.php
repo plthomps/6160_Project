@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+	<!--Author:Prashant Desai-->
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Pet Inn</title>
@@ -13,7 +14,6 @@
 	</head>
 
 	<body class="bg">
-	<!--<span class="headStyle"><i>Pet Inn</i> <span class="sloganStyle">WE CARE FOR YOUR PET</span></span>-->
 	<div class="page-header">
 	  <h1 class="headStyle">Pet Inn <small class="sloganStyle">WE CARE FOR YOUR PET</small></h1>
 	</div>
