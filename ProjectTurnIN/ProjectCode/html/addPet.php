@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+	<!--Author:Prashant Desai-->
 	<head>
 			<meta name="viewport" content="width=device-width, initial-scale=1">
 			<title>Pet Inn</title>
@@ -22,7 +23,7 @@
 		
 		// Check connection
 		if($link === false){
-			//die("ERROR: Could not connect. " . mysqli_connect_error());
+			die("ERROR: Could not connect. " . mysqli_connect_error());
 		} else {
 			//echo "Connected...";
 		}
@@ -41,16 +42,13 @@
 			$selectedSizeXL = "";
 	if (isset($_GET['id']) && is_numeric($_GET['id']))
 			{
-			//echo "hey.....................";
 				$id = $_GET['id'];
-				//echo $id;
-				
+		
 				$sql = "SELECT PetID, PetName, PetType, Gender, Size FROM pet where PetID = $id";
 				$resultSelectedPet = mysqli_query($link, $sql);
 				
 				if (mysqli_num_rows($resultSelectedPet) > 0) {
 					while($row = mysqli_fetch_assoc($resultSelectedPet)) {
-								//echo "Hello " . $row["PetName"] . $row["PetType"] . $row["Gender"] .  $row["Size"];
 								$selectedName = $row["PetName"];
 								if(strcmp($row["PetType"], "Dog") == 0){
 									$selectedDType = "selected";
@@ -101,13 +99,12 @@
 					 echo "<script type='text/javascript'>alert('ERROR: Could not able to execute');</script>";
 				 }
 				}
-			} else{ //echo "else.....................";
+			} else{ 
 	if(isset($_POST['insertPet'])){ 
 		
 		// Escape user inputs for security
 		$result = mysqli_query($link, "SELECT MAX(PetID) FROM pet");
 		$row = mysqli_fetch_array($result);
-		//echo $row[0];
 			
 		$petid = $row[0]+1;
 		$personid = 201;
@@ -127,10 +124,6 @@
 			if(array_key_exists('petsize', $_POST)){
 			$selected_size = $_POST['petsize'];
 			}
-			
-			//$selected_val = $animals[$_POST['animal']];
-			
-			//echo "hi " . $selected_type . " " . $selected_gender . " " . $selected_size;
 			
 			
 				 if (!empty($petid) && !empty($personid) && !empty($name) && !empty($selected_type) && !empty($selected_gender) && !empty($selected_size)) {
@@ -163,12 +156,6 @@
 		<!--Remaining section-->
 		<center>
 			<div>
-				<!--<div class="row">
-					<div class="col-md-12 col-lg-12">
-						<h2>***Welcome to Pet Inn***</h2>
-					</div>
-				</div>-->
-				
 				<div class="row AddPetRectangle">
 					<form method="post">
 						<div class="form-group">

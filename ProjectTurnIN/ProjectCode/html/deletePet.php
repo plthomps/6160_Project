@@ -5,8 +5,7 @@
 DELETE.PHP
 
 */
-
-
+/*Author:Prashant Desai*/
 
 // connect to the database
 //mysqli_connect accepts 4 parameters as serverHostName, userName, password, schemaName
@@ -30,9 +29,6 @@ if (isset($_GET['id']) && is_numeric($_GET['id']))
 // get id value
 
 $id = $_GET['id'];
-
-//echo $id;
-
 // delete the entry
 
  if(mysqli_query($link, "DELETE FROM pet WHERE petid=$id")){

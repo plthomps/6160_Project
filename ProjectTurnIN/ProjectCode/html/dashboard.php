@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+	<!--Author:Prashant Desai-->
 	<head>
 			<meta name="viewport" content="width=device-width, initial-scale=1">
 			<title>Pet Inn</title>
@@ -36,24 +37,24 @@
 		
 		<div class="container">
 		  <ul class="nav nav-pills row" style="background: #dee6f1;">
-			<li class="active col-md-4 col-lg-4 navHeaderStyle"><a data-toggle="pill" href="#home">Clients</a></li>
-			<li class="col-md-4 col-lg-4 navHeaderStyle"><a data-toggle="pill" href="#menu1">Pets</a></li>
-			<li class="col-md-4 col-lg-4 navHeaderStyle"><a data-toggle="pill" href="#menu2">Place an Order</a></li>
+			<!--<li class="active col-md-4 col-lg-4 navHeaderStyle"><a data-toggle="pill" href="#home">Clients</a></li>-->
+			<li class="active col-md-6 col-lg-6 navHeaderStyle"><a data-toggle="pill" href="#menu1">Pets</a></li>
+			<li class="col-md-6 col-lg-6 navHeaderStyle"><a data-toggle="pill" href="#menu2">Place an Order</a></li>
 		  </ul>
 
 		  <div class="tab-content">
-			<div id="home" class="tab-pane fade in active">
+			<!--<div id="home" class="tab-pane fade in active">
 			<div class="row">
 				<div class="col-md-12 col-lg-12">
 				  <h3>Clients</h3>
 				</div>
 				<!--<div class="col-md-2 col-lg-2" style="margin-top: 1%;">
 					<button type="button" class="btn btn-primary" onclick="addClient()">Add Client</button>
-				</div>-->			  
+				</div>			  
 			</div>
-			</div>
+			</div>-->
 			
-			<div id="menu1" class="tab-pane fade">
+			<div id="menu1" class="tab-pane fade in active">
 			  <div class="row">
 				<div class="col-md-10 col-lg-10">
 				  <h3>Pets</h3>
@@ -66,42 +67,19 @@
 			  <table class="table table-striped">
 				  <thead>
 					<tr>
-					  <!--<th scope="col">#</th>-->
 					  <th scope="col">Name</th>
 					  <th scope="col">Type</th>
 					  <th scope="col">Gender</th>
 					  <th scope="col">Size</th>
 					</tr>
 				  </thead>
-				  <tbody>
-					<!--<tr>
-					  <th scope="row">1</th>
-					  <td>Mark</td>
-					  <td>Dog</td>
-					  <td>M</td>
-					  <td>S</td>
-					</tr>
-					<tr>
-					  <th scope="row">1</th>
-					  <td>Shey</td>
-					  <td>Cat</td>
-					  <td>F</td>
-					  <td>XL</td>
-					</tr>
-					<tr>
-					  <th scope="row">1</th>
-					  <td>Gary</td>
-					  <td>Dog</td>
-					  <td>F</td>
-					  <td>L</td>
-					</tr>-->
-				
+				  <tbody>				
 					<?php
 					/* Attempt MySQL server connection. Assuming you are running MySQL
 						server with default setting (user 'root' with no password) */
 					  //mysqli_connect accepts 4 parameters as serverHostName, userName, password, schemaName
 						$link = mysqli_connect("", "", "", "");
-					  
+						
 						// Check connection
 						if($link === false){
 							die("ERROR: Could not connect. " . mysqli_connect_error());
@@ -137,24 +115,10 @@
 					<button type="button" class="btn btn-primary"><a href="./placeOrder.php" style="color: #fff !important;">Place Order</a></button>
 				</div>			  
 			</div>
-			  <!--<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>-->
-			</div>
+		     </div>
 		  </div>
 		</div>
 		
-		<!--<div style="text-align:center;">
-			<div class="row">
-				<div class="col-md-12 col-lg-12">
-					<h2>***Welcome to Pet Inn***</h2>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-md-12 col-lg-12">
-					<h3>You have not availed any service yet.</h3>
-				</div>
-			</div>
-		</div>-->
 		<!------------------------------------>
 		<?php include('footer.php'); ?>
 	<script src="../js/main.js"></script>
